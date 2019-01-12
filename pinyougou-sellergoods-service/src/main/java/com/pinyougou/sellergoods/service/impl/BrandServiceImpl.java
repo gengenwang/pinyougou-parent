@@ -53,5 +53,21 @@ public class BrandServiceImpl implements BrandService {
         brandMapper.updateByPrimaryKeySelective(brand);
     }
 
+    @Override
+    public void delete(Long[] ids) {
+        for (Long id : ids) {
+            brandMapper.deleteByPrimaryKey(id);
+        }
+    }
+
+    @Override
+    public PageResult findPage(TbBrand brand, int pageNum, int pageSize) {
+
+        PageHelper.startPage(pageNum, pageSize);
+        Page<TbBrand> page = (Page<TbBrand>) brandMapper.select4General(brand);
+
+        return new PageResult(page.getTotal(), page.getResult());
+    }
+
 
 }
