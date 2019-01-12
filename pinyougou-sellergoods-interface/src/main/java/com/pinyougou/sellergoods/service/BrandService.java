@@ -24,5 +24,10 @@ public interface BrandService {
      */
     PageResult findPage(int pageNum, int pageSize);
 
+    void add(TbBrand brand);
+
+    TbBrand findOne(Long id);
+
+    void update(TbBrand brand);
 
 }
