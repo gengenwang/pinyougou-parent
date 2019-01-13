@@ -73,7 +73,7 @@ public class SpecificationServiceImpl implements SpecificationService {
 
         //获取规格实体
         TbSpecification tbspecification = specification.getSpecification();
-        specificationMapper.updateByPrimaryKey(tbspecification);
+        specificationMapper.updateByPrimaryKeySelective(tbspecification);
 
         //删除原来规格对应的规格选项
         specificationOptionMapper.deleteBySpecId(tbspecification.getId());
@@ -102,7 +102,9 @@ public class SpecificationServiceImpl implements SpecificationService {
         specification.setSpecification(tbSpecification);
 
         //获取规格选项列表
-        List<TbSpecificationOption> specificationOptionList = specificationOptionMapper.selectBySpecId(id);
+        TbSpecificationOption specificationOptionSelect = new TbSpecificationOption();
+        specificationOptionSelect.setSpecId(id);
+        List<TbSpecificationOption> specificationOptionList = specificationOptionMapper.select4General(specificationOptionSelect);
         specification.setSpecificationOptionList(specificationOptionList);
 
         return specification;//组合实体类
