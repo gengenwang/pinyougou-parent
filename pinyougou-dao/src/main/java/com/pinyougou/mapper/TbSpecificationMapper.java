@@ -2,6 +2,9 @@ package com.pinyougou.mapper;
 
 import com.pinyougou.pojo.TbSpecification;
 
+import java.util.List;
+import java.util.Map;
+
 public interface TbSpecificationMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +17,8 @@ public interface TbSpecificationMapper {
     int updateByPrimaryKeySelective(TbSpecification record);
 
     int updateByPrimaryKey(TbSpecification record);
+
+    List<TbSpecification> select4General(TbSpecification tbSpecification);
+
+    List<Map> selectOptionList();
 }

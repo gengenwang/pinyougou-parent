@@ -2,6 +2,8 @@ package com.pinyougou.mapper;
 
 import com.pinyougou.pojo.TbGoods;
 
+import java.util.List;
+
 public interface TbGoodsMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,6 @@ public interface TbGoodsMapper {
     int updateByPrimaryKeySelective(TbGoods record);
 
     int updateByPrimaryKey(TbGoods record);
+
+    List<TbGoods> select4General(TbGoods tbGoods);
 }
